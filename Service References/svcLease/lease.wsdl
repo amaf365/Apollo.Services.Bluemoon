@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://www.bluemoon.com/services/lease.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="lease" targetNamespace="https://www.bluemoon.com/services/lease.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://www.bluemoon.com/services/lease.php">
+      <xsd:element name="AmendRoommates">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="ResidentToMoveOut" nillable="true" type="xsd:string" />
+            <xsd:element name="ResidentToMoveIn" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AmendRoommatesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AmendRoommatesResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateLease">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseXMLData" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="LeaseId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateLeaseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CreateLeaseResult" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteEsignature">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="EsignatureId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteEsignatureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="DeleteEsignatureResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteLease">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteLeaseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="DeleteLeaseResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EditLease">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="LeaseXMLData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EditLeaseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EditLeaseResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EditRenewal">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="RenewalXMLData" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EditRenewalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EditRenewalResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExecuteLease">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="EsignatureId" type="xsd:int" />
+            <xsd:element name="OwnerRepSignature" type="xsd:string" />
+            <xsd:element name="OwnerRepInitials" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExecuteLeaseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ExecuteLeaseResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDefaultLeaseXMLData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDefaultLeaseXMLDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetDefaultLeaseXMLDataResult" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDefaultRenewalXMLData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetDefaultRenewalXMLDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetDefaultRenewalXMLDataResult" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEsignatureData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="EsignatureId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Signer">
+        <xsd:all>
+          <xsd:element name="Key" nillable="true" type="xsd:string" />
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+          <xsd:element name="Email" nillable="true" type="xsd:string" />
+          <xsd:element name="DateSigned" nillable="true" type="xsd:string" />
+          <xsd:element name="PaperlessLeaseRequested" nillable="true" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSigner">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Signer" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FormShort">
+        <xsd:all>
+          <xsd:element name="Id" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfFormshort">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:FormShort" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Esignature">
+        <xsd:all>
+          <xsd:element name="Id" nillable="true" type="xsd:int" />
+          <xsd:element name="DateInitiated" nillable="true" type="xsd:string" />
+          <xsd:element name="DateExecuted" nillable="true" type="xsd:string" />
+          <xsd:element name="LeaseDate" nillable="true" type="xsd:string" />
+          <xsd:element name="StreetAddress" nillable="true" type="xsd:string" />
+          <xsd:element name="UnitNumber" nillable="true" type="xsd:string" />
+          <xsd:element name="LeaseTermBeginDate" nillable="true" type="xsd:string" />
+          <xsd:element name="Signers" nillable="true" type="tns:ArrayOfSigner" />
+          <xsd:element name="LeaseForms" nillable="true" type="tns:ArrayOfFormshort" />
+          <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="GetEsignatureDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetEsignatureDataResult" type="tns:Esignature" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEsignaturePDF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="EsignatureId" type="xsd:int" />
+            <xsd:element name="SignerKey" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEsignaturePDFResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetEsignaturePDFResult" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLeasePDF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="LeaseForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="Preview" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLeasePDFResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLeasePDFResult" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLeaseXMLData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLeaseXMLDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLeaseXMLDataResult" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRenewalPDF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="RenewalForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="Preview" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRenewalPDFResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetRenewalPDFResult" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRenewalXMLData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRenewalXMLDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetRenewalXMLDataResult" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRestrictedPDF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="StandardForm" nillable="true" type="tns:FormShort" />
+            <xsd:element name="CustomForm" nillable="true" type="tns:FormShort" />
+            <xsd:element name="FormXMLData" nillable="true" type="xsd:string" />
+            <xsd:element name="Preview" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRestrictedPDFResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetRestrictedPDFResult" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomDefaultFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Field">
+        <xsd:all>
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+          <xsd:element name="Type" nillable="true" type="xsd:string" />
+          <xsd:element name="Length" nillable="true" type="xsd:string" />
+          <xsd:element name="Required" nillable="true" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Field" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListCustomDefaultFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListCustomDefaultFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListCustomFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomForms">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="ExcludeEsignatureRestrictedForms" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Form">
+        <xsd:all>
+          <xsd:element name="Id" nillable="true" type="xsd:string" />
+          <xsd:element name="Title" nillable="true" type="xsd:string" />
+          <xsd:element name="Copies" nillable="true" type="xsd:int" />
+          <xsd:element name="Cost" nillable="true" type="xsd:anyType" />
+          <xsd:element name="PageSize" nillable="true" type="xsd:string" />
+          <xsd:element name="Language" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfForm">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Form" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListCustomFormsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListCustomFormsResult" type="tns:ArrayOfForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomRestrictedFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="Form" type="tns:FormShort" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomRestrictedFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListCustomRestrictedFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomRestrictedForms">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListCustomRestrictedFormsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListCustomRestrictedFormsResult" type="tns:ArrayOfForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListDefaultFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListDefaultFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListDefaultFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListEsignatures">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="IncludeNonpending" nillable="true" type="xsd:boolean" />
+            <xsd:element name="UnitNumber" nillable="true" type="xsd:string" />
+            <xsd:element name="StreetAddress" nillable="true" type="xsd:string" />
+            <xsd:element name="ResidentName" nillable="true" type="xsd:string" />
+            <xsd:element name="StartDate" nillable="true" type="xsd:string" />
+            <xsd:element name="EndDate" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfEsignature">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Esignature" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListEsignaturesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListEsignaturesResult" type="tns:ArrayOfEsignature" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="StandardForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListForms">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="LeaseId" nillable="true" type="xsd:int" />
+            <xsd:element name="ExcludeEsignatureRestrictedForms" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListFormsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListFormsResult" type="tns:ArrayOfForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalDefaultFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalDefaultFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListRenewalDefaultFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="StandardForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListRenewalFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalForms">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="ExcludeEsignatureRestrictedForms" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRenewalFormsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListRenewalFormsResult" type="tns:ArrayOfForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRestrictedFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="Form" type="tns:FormShort" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRestrictedFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListRestrictedFieldsResult" type="tns:ArrayOfField" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRestrictedForms">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListRestrictedFormsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListRestrictedFormsResult" type="tns:ArrayOfForm" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListUnits">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="PropertyId" nillable="true" type="xsd:int" />
+            <xsd:element name="UnitNumber" nillable="true" type="xsd:string" />
+            <xsd:element name="StreetAddress" nillable="true" type="xsd:string" />
+            <xsd:element name="ResidentName" nillable="true" type="xsd:string" />
+            <xsd:element name="StartDate" nillable="true" type="xsd:string" />
+            <xsd:element name="EndDate" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Resident">
+        <xsd:all>
+          <xsd:element name="Number" nillable="true" type="xsd:int" />
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfResident">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Resident" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Unit">
+        <xsd:all>
+          <xsd:element name="Id" nillable="true" type="xsd:int" />
+          <xsd:element name="LeaseDate" nillable="true" type="xsd:string" />
+          <xsd:element name="StreetAddress" nillable="true" type="xsd:string" />
+          <xsd:element name="UnitNumber" nillable="true" type="xsd:string" />
+          <xsd:element name="LeaseTermBeginDate" nillable="true" type="xsd:string" />
+          <xsd:element name="LeaseTermEndDate" nillable="true" type="xsd:string" />
+          <xsd:element name="Residents" nillable="true" type="tns:ArrayOfResident" />
+          <xsd:element name="Renewed" nillable="true" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfUnit">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Unit" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListUnitsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListUnitsResult" type="tns:ArrayOfUnit" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListUserPrivileges">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Privilege">
+        <xsd:all>
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+          <xsd:element name="Restricted" nillable="true" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPrivilege">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Privilege" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListUserPrivilegesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListUserPrivilegesResult" type="tns:ArrayOfPrivilege" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenewLease">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="RenewalXMLData" type="xsd:string" />
+            <xsd:element name="ImportDefaultLeaseData" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenewLeaseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RenewLeaseResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Contact">
+        <xsd:all>
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+          <xsd:element name="Email" nillable="true" type="xsd:string" />
+          <xsd:element name="Phone" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfContact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Contact" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RequestEsignature">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="OwnerRep" type="tns:Contact" />
+            <xsd:element name="Residents" type="tns:ArrayOfContact" />
+            <xsd:element name="LeaseForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="SendOwnerRepNotices" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestEsignatureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RequestEsignatureResult" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestRenewalEsignature">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="LeaseId" type="xsd:int" />
+            <xsd:element name="OwnerRep" type="tns:Contact" />
+            <xsd:element name="Residents" type="tns:ArrayOfContact" />
+            <xsd:element name="RenewalForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="CustomForms" nillable="true" type="tns:ArrayOfFormshort" />
+            <xsd:element name="SendOwnerRepNotices" nillable="true" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestRenewalEsignatureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RequestRenewalEsignatureResult" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ResendEsignatureRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+            <xsd:element name="SignerKey" type="xsd:string" />
+            <xsd:element name="Email" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ResendEsignatureRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ResendEsignatureRequestResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AuthenticateUser">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SerialNumber" type="xsd:string" />
+            <xsd:element name="UserId" type="xsd:string" />
+            <xsd:element name="Password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AuthenticateUserResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AuthenticateUserResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CloseSession">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CloseSessionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CloseSessionResult" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateSession">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SerialNumber" type="xsd:string" />
+            <xsd:element name="UserId" type="xsd:string" />
+            <xsd:element name="Password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateSessionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CreateSessionResult" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFormsCounter">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFormsCounterResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFormsCounterResult" type="xsd:anyType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ListProperties">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Property">
+        <xsd:all>
+          <xsd:element name="Id" nillable="true" type="xsd:int" />
+          <xsd:element name="Name" nillable="true" type="xsd:string" />
+          <xsd:element name="Type" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfProperty">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ListPropertiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ListPropertiesResult" type="tns:ArrayOfProperty" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AmendRoommatesIn">
+    <wsdl:part name="parameters" element="tns:AmendRoommates" />
+  </wsdl:message>
+  <wsdl:message name="AmendRoommatesOut">
+    <wsdl:part name="parameters" element="tns:AmendRoommatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateLeaseIn">
+    <wsdl:part name="parameters" element="tns:CreateLease" />
+  </wsdl:message>
+  <wsdl:message name="CreateLeaseOut">
+    <wsdl:part name="parameters" element="tns:CreateLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEsignatureIn">
+    <wsdl:part name="parameters" element="tns:DeleteEsignature" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEsignatureOut">
+    <wsdl:part name="parameters" element="tns:DeleteEsignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLeaseIn">
+    <wsdl:part name="parameters" element="tns:DeleteLease" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLeaseOut">
+    <wsdl:part name="parameters" element="tns:DeleteLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditLeaseIn">
+    <wsdl:part name="parameters" element="tns:EditLease" />
+  </wsdl:message>
+  <wsdl:message name="EditLeaseOut">
+    <wsdl:part name="parameters" element="tns:EditLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditRenewalIn">
+    <wsdl:part name="parameters" element="tns:EditRenewal" />
+  </wsdl:message>
+  <wsdl:message name="EditRenewalOut">
+    <wsdl:part name="parameters" element="tns:EditRenewalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteLeaseIn">
+    <wsdl:part name="parameters" element="tns:ExecuteLease" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteLeaseOut">
+    <wsdl:part name="parameters" element="tns:ExecuteLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultLeaseXMLDataIn">
+    <wsdl:part name="parameters" element="tns:GetDefaultLeaseXMLData" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultLeaseXMLDataOut">
+    <wsdl:part name="parameters" element="tns:GetDefaultLeaseXMLDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultRenewalXMLDataIn">
+    <wsdl:part name="parameters" element="tns:GetDefaultRenewalXMLData" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultRenewalXMLDataOut">
+    <wsdl:part name="parameters" element="tns:GetDefaultRenewalXMLDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEsignatureDataIn">
+    <wsdl:part name="parameters" element="tns:GetEsignatureData" />
+  </wsdl:message>
+  <wsdl:message name="GetEsignatureDataOut">
+    <wsdl:part name="parameters" element="tns:GetEsignatureDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEsignaturePDFIn">
+    <wsdl:part name="parameters" element="tns:GetEsignaturePDF" />
+  </wsdl:message>
+  <wsdl:message name="GetEsignaturePDFOut">
+    <wsdl:part name="parameters" element="tns:GetEsignaturePDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeasePDFIn">
+    <wsdl:part name="parameters" element="tns:GetLeasePDF" />
+  </wsdl:message>
+  <wsdl:message name="GetLeasePDFOut">
+    <wsdl:part name="parameters" element="tns:GetLeasePDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaseXMLDataIn">
+    <wsdl:part name="parameters" element="tns:GetLeaseXMLData" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaseXMLDataOut">
+    <wsdl:part name="parameters" element="tns:GetLeaseXMLDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalPDFIn">
+    <wsdl:part name="parameters" element="tns:GetRenewalPDF" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalPDFOut">
+    <wsdl:part name="parameters" element="tns:GetRenewalPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalXMLDataIn">
+    <wsdl:part name="parameters" element="tns:GetRenewalXMLData" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalXMLDataOut">
+    <wsdl:part name="parameters" element="tns:GetRenewalXMLDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRestrictedPDFIn">
+    <wsdl:part name="parameters" element="tns:GetRestrictedPDF" />
+  </wsdl:message>
+  <wsdl:message name="GetRestrictedPDFOut">
+    <wsdl:part name="parameters" element="tns:GetRestrictedPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomDefaultFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListCustomDefaultFields" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomDefaultFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListCustomDefaultFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomFormsIn">
+    <wsdl:part name="parameters" element="tns:ListCustomForms" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomFormsOut">
+    <wsdl:part name="parameters" element="tns:ListCustomFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomRestrictedFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListCustomRestrictedFields" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomRestrictedFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListCustomRestrictedFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomRestrictedFormsIn">
+    <wsdl:part name="parameters" element="tns:ListCustomRestrictedForms" />
+  </wsdl:message>
+  <wsdl:message name="ListCustomRestrictedFormsOut">
+    <wsdl:part name="parameters" element="tns:ListCustomRestrictedFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListDefaultFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListDefaultFields" />
+  </wsdl:message>
+  <wsdl:message name="ListDefaultFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListDefaultFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListEsignaturesIn">
+    <wsdl:part name="parameters" element="tns:ListEsignatures" />
+  </wsdl:message>
+  <wsdl:message name="ListEsignaturesOut">
+    <wsdl:part name="parameters" element="tns:ListEsignaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListFields" />
+  </wsdl:message>
+  <wsdl:message name="ListFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListFormsIn">
+    <wsdl:part name="parameters" element="tns:ListForms" />
+  </wsdl:message>
+  <wsdl:message name="ListFormsOut">
+    <wsdl:part name="parameters" element="tns:ListFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalDefaultFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListRenewalDefaultFields" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalDefaultFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListRenewalDefaultFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListRenewalFields" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListRenewalFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalFormsIn">
+    <wsdl:part name="parameters" element="tns:ListRenewalForms" />
+  </wsdl:message>
+  <wsdl:message name="ListRenewalFormsOut">
+    <wsdl:part name="parameters" element="tns:ListRenewalFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListRestrictedFieldsIn">
+    <wsdl:part name="parameters" element="tns:ListRestrictedFields" />
+  </wsdl:message>
+  <wsdl:message name="ListRestrictedFieldsOut">
+    <wsdl:part name="parameters" element="tns:ListRestrictedFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListRestrictedFormsIn">
+    <wsdl:part name="parameters" element="tns:ListRestrictedForms" />
+  </wsdl:message>
+  <wsdl:message name="ListRestrictedFormsOut">
+    <wsdl:part name="parameters" element="tns:ListRestrictedFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListUnitsIn">
+    <wsdl:part name="parameters" element="tns:ListUnits" />
+  </wsdl:message>
+  <wsdl:message name="ListUnitsOut">
+    <wsdl:part name="parameters" element="tns:ListUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListUserPrivilegesIn">
+    <wsdl:part name="parameters" element="tns:ListUserPrivileges" />
+  </wsdl:message>
+  <wsdl:message name="ListUserPrivilegesOut">
+    <wsdl:part name="parameters" element="tns:ListUserPrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RenewLeaseIn">
+    <wsdl:part name="parameters" element="tns:RenewLease" />
+  </wsdl:message>
+  <wsdl:message name="RenewLeaseOut">
+    <wsdl:part name="parameters" element="tns:RenewLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestEsignatureIn">
+    <wsdl:part name="parameters" element="tns:RequestEsignature" />
+  </wsdl:message>
+  <wsdl:message name="RequestEsignatureOut">
+    <wsdl:part name="parameters" element="tns:RequestEsignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestRenewalEsignatureIn">
+    <wsdl:part name="parameters" element="tns:RequestRenewalEsignature" />
+  </wsdl:message>
+  <wsdl:message name="RequestRenewalEsignatureOut">
+    <wsdl:part name="parameters" element="tns:RequestRenewalEsignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResendEsignatureRequestIn">
+    <wsdl:part name="parameters" element="tns:ResendEsignatureRequest" />
+  </wsdl:message>
+  <wsdl:message name="ResendEsignatureRequestOut">
+    <wsdl:part name="parameters" element="tns:ResendEsignatureRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionIn">
+    <wsdl:part name="parameters" element="tns:CloseSession" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionOut">
+    <wsdl:part name="parameters" element="tns:CloseSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSessionIn">
+    <wsdl:part name="parameters" element="tns:CreateSession" />
+  </wsdl:message>
+  <wsdl:message name="CreateSessionOut">
+    <wsdl:part name="parameters" element="tns:CreateSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsCounterIn">
+    <wsdl:part name="parameters" element="tns:GetFormsCounter" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsCounterOut">
+    <wsdl:part name="parameters" element="tns:GetFormsCounterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListPropertiesIn">
+    <wsdl:part name="parameters" element="tns:ListProperties" />
+  </wsdl:message>
+  <wsdl:message name="ListPropertiesOut">
+    <wsdl:part name="parameters" element="tns:ListPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="leasePort">
+    <wsdl:operation name="AmendRoommates">
+      <documentation>TAA, NAA, GAA and CAN licenses only - Updates composition of roommates for existing lease record</documentation>
+      <wsdl:input message="tns:AmendRoommatesIn" />
+      <wsdl:output message="tns:AmendRoommatesOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLease">
+      <documentation>Creates new lease record
+Returns unique LeaseId</documentation>
+      <wsdl:input message="tns:CreateLeaseIn" />
+      <wsdl:output message="tns:CreateLeaseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEsignature">
+      <documentation>Deletes electronic signature transaction</documentation>
+      <wsdl:input message="tns:DeleteEsignatureIn" />
+      <wsdl:output message="tns:DeleteEsignatureOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLease">
+      <documentation>Deletes lease record</documentation>
+      <wsdl:input message="tns:DeleteLeaseIn" />
+      <wsdl:output message="tns:DeleteLeaseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditLease">
+      <documentation>Modifies an existing lease record</documentation>
+      <wsdl:input message="tns:EditLeaseIn" />
+      <wsdl:output message="tns:EditLeaseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditRenewal">
+      <documentation>TAA and GAA licenses only - Modifies renewal-specific data for an existing lease record</documentation>
+      <wsdl:input message="tns:EditRenewalIn" />
+      <wsdl:output message="tns:EditRenewalOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteLease">
+      <documentation>Apply electronic signature of Owner/Rep to archived lease document</documentation>
+      <wsdl:input message="tns:ExecuteLeaseIn" />
+      <wsdl:output message="tns:ExecuteLeaseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultLeaseXMLData">
+      <documentation>Returns default XML lease data</documentation>
+      <wsdl:input message="tns:GetDefaultLeaseXMLDataIn" />
+      <wsdl:output message="tns:GetDefaultLeaseXMLDataOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultRenewalXMLData">
+      <documentation>TAA and GAA licenses only - Returns default XML lease renewal data</documentation>
+      <wsdl:input message="tns:GetDefaultRenewalXMLDataIn" />
+      <wsdl:output message="tns:GetDefaultRenewalXMLDataOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEsignatureData">
+      <documentation>Returns electronic signature transaction data</documentation>
+      <wsdl:input message="tns:GetEsignatureDataIn" />
+      <wsdl:output message="tns:GetEsignatureDataOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEsignaturePDF">
+      <documentation>Returns byte stream PDF of lease document archived for electronic signature</documentation>
+      <wsdl:input message="tns:GetEsignaturePDFIn" />
+      <wsdl:output message="tns:GetEsignaturePDFOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeasePDF">
+      <documentation>Returns byte stream PDF of lease document</documentation>
+      <wsdl:input message="tns:GetLeasePDFIn" />
+      <wsdl:output message="tns:GetLeasePDFOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaseXMLData">
+      <documentation>Returns XML lease data</documentation>
+      <wsdl:input message="tns:GetLeaseXMLDataIn" />
+      <wsdl:output message="tns:GetLeaseXMLDataOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalPDF">
+      <documentation>TAA and GAA licenses only - Returns byte stream PDF of lease renewal document</documentation>
+      <wsdl:input message="tns:GetRenewalPDFIn" />
+      <wsdl:output message="tns:GetRenewalPDFOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalXMLData">
+      <documentation>TAA and GAA licenses only - Returns XML lease renewal data</documentation>
+      <wsdl:input message="tns:GetRenewalXMLDataIn" />
+      <wsdl:output message="tns:GetRenewalXMLDataOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRestrictedPDF">
+      <documentation>Returns byte stream PDF of non-batch-printable form</documentation>
+      <wsdl:input message="tns:GetRestrictedPDFIn" />
+      <wsdl:output message="tns:GetRestrictedPDFOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomDefaultFields">
+      <documentation>Returns info for custom fields available in Default Lease template for current license</documentation>
+      <wsdl:input message="tns:ListCustomDefaultFieldsIn" />
+      <wsdl:output message="tns:ListCustomDefaultFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomFields">
+      <documentation>Returns info for custom fields available in Lease Database for current license</documentation>
+      <wsdl:input message="tns:ListCustomFieldsIn" />
+      <wsdl:output message="tns:ListCustomFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomForms">
+      <documentation>Returns info for custom lease forms available for current license</documentation>
+      <wsdl:input message="tns:ListCustomFormsIn" />
+      <wsdl:output message="tns:ListCustomFormsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomRestrictedFields">
+      <documentation>Returns info for fields available on non-batch-printable custom form for current license</documentation>
+      <wsdl:input message="tns:ListCustomRestrictedFieldsIn" />
+      <wsdl:output message="tns:ListCustomRestrictedFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomRestrictedForms">
+      <documentation>Returns info for custom non-batch-printable forms available for current license</documentation>
+      <wsdl:input message="tns:ListCustomRestrictedFormsIn" />
+      <wsdl:output message="tns:ListCustomRestrictedFormsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListDefaultFields">
+      <documentation>Returns info for fields available in Lease database for current license which can auto-populate from Default Lease template</documentation>
+      <wsdl:input message="tns:ListDefaultFieldsIn" />
+      <wsdl:output message="tns:ListDefaultFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListEsignatures">
+      <documentation>Returns info for all electronic signature transactions matching specified criteria</documentation>
+      <wsdl:input message="tns:ListEsignaturesIn" />
+      <wsdl:output message="tns:ListEsignaturesOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListFields">
+      <documentation>Returns info for fields available in Lease database for current license</documentation>
+      <wsdl:input message="tns:ListFieldsIn" />
+      <wsdl:output message="tns:ListFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListForms">
+      <documentation>Returns info for lease forms available for current license</documentation>
+      <wsdl:input message="tns:ListFormsIn" />
+      <wsdl:output message="tns:ListFormsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalDefaultFields">
+      <documentation>TAA and GAA licenses only - Returns info for renewal-specific fields available in Lease database for current license which can auto-populate from Default Lease template</documentation>
+      <wsdl:input message="tns:ListRenewalDefaultFieldsIn" />
+      <wsdl:output message="tns:ListRenewalDefaultFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalFields">
+      <documentation>TAA and GAA licenses only - Returns info for renewal-specific fields available in Lease database for current license</documentation>
+      <wsdl:input message="tns:ListRenewalFieldsIn" />
+      <wsdl:output message="tns:ListRenewalFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalForms">
+      <documentation>TAA and GAA licenses only - Returns info for lease renewal forms available for current license</documentation>
+      <wsdl:input message="tns:ListRenewalFormsIn" />
+      <wsdl:output message="tns:ListRenewalFormsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListRestrictedFields">
+      <documentation>Returns info for fields available on non-batch-printable form for current license</documentation>
+      <wsdl:input message="tns:ListRestrictedFieldsIn" />
+      <wsdl:output message="tns:ListRestrictedFieldsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListRestrictedForms">
+      <documentation>Returns info for non-batch-printable forms available for current license</documentation>
+      <wsdl:input message="tns:ListRestrictedFormsIn" />
+      <wsdl:output message="tns:ListRestrictedFormsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListUnits">
+      <documentation>Returns info for all lease records matching specified criteria</documentation>
+      <wsdl:input message="tns:ListUnitsIn" />
+      <wsdl:output message="tns:ListUnitsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListUserPrivileges">
+      <documentation>Returns account privileges for current user</documentation>
+      <wsdl:input message="tns:ListUserPrivilegesIn" />
+      <wsdl:output message="tns:ListUserPrivilegesOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewLease">
+      <documentation>TAA and GAA licenses only - Extends term of existing lease record</documentation>
+      <wsdl:input message="tns:RenewLeaseIn" />
+      <wsdl:output message="tns:RenewLeaseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestEsignature">
+      <documentation>Generates/archives PDF lease document and sends electronic signature request to all lease signers
+Returns unique EsignatureId</documentation>
+      <wsdl:input message="tns:RequestEsignatureIn" />
+      <wsdl:output message="tns:RequestEsignatureOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestRenewalEsignature">
+      <documentation>TAA and GAA licenses only - Generates/archives PDF lease renewal document and sends electronic signature request to all lease signers
+Returns unique EsignatureId</documentation>
+      <wsdl:input message="tns:RequestRenewalEsignatureIn" />
+      <wsdl:output message="tns:RequestRenewalEsignatureOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendEsignatureRequest">
+      <documentation>Resend electronic signature notification email to resident</documentation>
+      <wsdl:input message="tns:ResendEsignatureRequestIn" />
+      <wsdl:output message="tns:ResendEsignatureRequestOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <documentation>Authenticates Blue Moon user</documentation>
+      <wsdl:input message="tns:AuthenticateUserIn" />
+      <wsdl:output message="tns:AuthenticateUserOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <documentation>Closes session</documentation>
+      <wsdl:input message="tns:CloseSessionIn" />
+      <wsdl:output message="tns:CloseSessionOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSession">
+      <documentation>Creates new session</documentation>
+      <wsdl:input message="tns:CreateSessionIn" />
+      <wsdl:output message="tns:CreateSessionOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormsCounter">
+      <documentation>Returns current forms counter</documentation>
+      <wsdl:input message="tns:GetFormsCounterIn" />
+      <wsdl:output message="tns:GetFormsCounterOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListProperties">
+      <documentation>Returns info for all properties contained by current license</documentation>
+      <wsdl:input message="tns:ListPropertiesIn" />
+      <wsdl:output message="tns:ListPropertiesOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="leaseBinding" type="tns:leasePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AmendRoommates">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#AmendRoommates" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLease">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#CreateLease" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEsignature">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#DeleteEsignature" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLease">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#DeleteLease" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditLease">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#EditLease" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditRenewal">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#EditRenewal" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteLease">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ExecuteLease" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultLeaseXMLData">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetDefaultLeaseXMLData" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultRenewalXMLData">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetDefaultRenewalXMLData" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEsignatureData">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetEsignatureData" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEsignaturePDF">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetEsignaturePDF" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeasePDF">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetLeasePDF" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaseXMLData">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetLeaseXMLData" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalPDF">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetRenewalPDF" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalXMLData">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetRenewalXMLData" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRestrictedPDF">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetRestrictedPDF" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomDefaultFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListCustomDefaultFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListCustomFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomForms">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListCustomForms" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomRestrictedFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListCustomRestrictedFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCustomRestrictedForms">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListCustomRestrictedForms" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListDefaultFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListDefaultFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListEsignatures">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListEsignatures" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListForms">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListForms" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalDefaultFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListRenewalDefaultFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListRenewalFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListRenewalForms">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListRenewalForms" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListRestrictedFields">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListRestrictedFields" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListRestrictedForms">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListRestrictedForms" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUnits">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListUnits" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUserPrivileges">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListUserPrivileges" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenewLease">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#RenewLease" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEsignature">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#RequestEsignature" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestRenewalEsignature">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#RequestRenewalEsignature" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendEsignatureRequest">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ResendEsignatureRequest" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#AuthenticateUser" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#CloseSession" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSession">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#CreateSession" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormsCounter">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#GetFormsCounter" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListProperties">
+      <soap:operation soapAction="https://www.bluemoon.com/services/lease.php#ListProperties" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="leaseService">
+    <wsdl:port name="leasePort" binding="tns:leaseBinding">
+      <soap:address location="https://www.bluemoon.com/services/lease.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
